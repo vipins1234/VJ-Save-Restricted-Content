@@ -51,9 +51,52 @@ async def upstatus(client, statusfile, message, chat):
 
 
 # progress writer
+import time
+
+# ultra premium progress bar
 def progress(current, total, message, type):
-    with open(f'{message.id}{type}status.txt', "w") as fileup:
-        fileup.write(f"{current * 100 / total:.1f}%")
+
+    percentage = current * 100 / total
+
+    speed = current / (time.time() - getattr(message, "_start_time", time.time()) + 1)
+
+    speed_mb = speed / 1024 / 1024
+
+    elapsed_time = time.time() - getattr(message, "_start_time", time.time()) + 1
+
+    remaining = (total - current) / speed if speed > 0 else 0
+
+    mins, secs = divmod(int(remaining), 60)
+
+    current_size = current / 1024 / 1024
+    total_size = total / 1024 / 1024
+
+    completed = int(percentage / 10)
+    remaining_bar = 10 - completed
+
+    progress_bar = (
+        "🟩" * completed +
+        "⬜" * remaining_bar
+    )
+
+    status = f"""
+╭━━━〔 ⚡ ULTRA PREMIUM ⚡ 〕━━━╮
+
+📦 Size : {current_size:.2f} / {total_size:.2f} MB
+🚀 Speed : {speed_mb:.2f} MB/s
+⏳ ETA : {mins:02d}:{secs:02d}
+
+┣━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ {progress_bar} {percentage:.1f}% ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━┫
+
+🔥 Status : {"Downloading" if type == "down" else "Uploading"}
+
+╰━━━━━━━━━━━━━━━━━━━━━━━╯
+"""
+
+    with open(f"{message.id}{type}status.txt", "w", encoding="utf-8") as f:
+        f.write(status)
 
 
 # start command
