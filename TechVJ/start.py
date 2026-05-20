@@ -27,7 +27,12 @@ async def downstatus(client, statusfile, message, chat):
         with open(statusfile, "r") as downread:
             txt = downread.read()
         try:
-            await client.edit_message_text(chat, message.id, f"**Downloaded:** **{txt}**")
+            await client.edit_message_text(
+    chat,
+    message.id,
+    f"📥 Downloading...\n\n<pre>{txt}</pre>",
+    parse_mode=enums.ParseMode.HTML
+			)
             await asyncio.sleep(10)
         except:
             await asyncio.sleep(5)
