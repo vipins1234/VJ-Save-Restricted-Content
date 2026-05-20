@@ -72,7 +72,6 @@ def progress(current, total, message, type):
 
     speed_mb = speed / 1024 / 1024
 
-    elapsed_time = time.time() - getattr(message, "_start_time", time.time()) + 1
 
     remaining = (total - current) / speed if speed > 0 else 0
 
