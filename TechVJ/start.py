@@ -271,12 +271,20 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
 
     message._start_time = time.time()
 
-smsg = await client.send_message(
-    message.chat.id,
-    "⚡ Starting Process...",
-    reply_to_message_id=message.id
-)
-    asyncio.create_task(downstatus(client, f'{message.id}downstatus.txt', smsg, chat))
+    smsg = await client.send_message(
+        message.chat.id,
+        "⚡ Starting Process...",
+        reply_to_message_id=message.id
+    )
+
+    asyncio.create_task(
+        downstatus(
+            client,
+            f'{message.id}downstatus.txt',
+            smsg,
+            chat
+        )
+	)
     try:
         file = await acc.download_media(msg, progress=progress, progress_args=[message,"down"])
         os.remove(f'{message.id}downstatus.txt')
