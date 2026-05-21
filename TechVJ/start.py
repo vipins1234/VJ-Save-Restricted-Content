@@ -404,18 +404,18 @@ async def save(client: Client, message: Message):
 
         if LOGIN_SYSTEM == True:
 
-    try:
-        await acc.disconnect()
+            try:
+                await acc.disconnect()
 
-    except:
-        pass
+            except:
+                pass
 
-batch_temp.IS_BATCH[message.from_user.id] = True
+        batch_temp.IS_BATCH[message.from_user.id] = True
 
-await client.send_message(
-    message.chat.id,
-    "✅ Batch Completed Successfully!"
-)
+        await client.send_message(
+            message.chat.id,
+            "✅ Batch Completed Successfully."
+		)
 
 # handle private
 async def handle_private(client: Client, acc, message: Message, chatid: int, msgid: int):
