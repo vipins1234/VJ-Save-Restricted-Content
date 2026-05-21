@@ -172,7 +172,7 @@ async def batch_cmd(client: Client, message: Message):
     batch_temp.IS_BATCH[uid] = True
 
     await message.reply_text(
-        "📌 Send START post link"
+    "📌 Send START post link"
 	)
 
 # cancel command
