@@ -411,6 +411,7 @@ async def save(client: Client, message: Message):
                 pass
 
         batch_temp.IS_BATCH[message.from_user.id] = True
+
 # handle private
 async def handle_private(client: Client, acc, message: Message, chatid: int, msgid: int):
     msg: Message = await acc.get_messages(chatid, msgid)
