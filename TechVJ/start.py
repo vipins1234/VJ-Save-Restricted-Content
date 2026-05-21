@@ -253,11 +253,10 @@ async def save(client: Client, message: Message):
             return await message.reply_text("**One Task Is Already Processing. Wait For Complete It. If You Want To Cancel This Task Then Use - /cancel**")
         datas = message.text.split("/")
         temp = datas[-1].replace("?single","").split("-")
-        fromID = int(temp[0].strip())
-        try:
-            toID = int(temp[1].strip())
-        except:
-            toID = fromID
+
+fromID = int(temp[0].strip())
+
+toID = fromID
 
         if LOGIN_SYSTEM == True:
             user_data = await db.get_session(message.from_user.id)
