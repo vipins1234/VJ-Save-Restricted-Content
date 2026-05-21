@@ -185,6 +185,49 @@ async def send_cancel(client: Client, message: Message):
 
 @Client.on_message(filters.text & filters.private)
 async def save(client: Client, message: Message):
+	uid = message.from_user.id
+    state = batch_temp.STATE.get(uid)
+
+    # STEP 1
+    if state == "WAIT_START_LINK":
+
+        batch_temp.DATA[uid] = {
+            "start_link": message.text
+        }
+
+        batch_temp.STATE[uid] = "WAIT_COUNT"
+
+        return await message.reply_text(
+            "📦 Send number of files"
+        )
+
+    # STEP 2
+    if state == "WAIT_COUNT":
+
+        try:
+            count = int(message.text)
+
+        except:
+            return await message.reply_text(
+                "❌ Invalid number"
+            )
+
+        start_link = batch_temp.DATA[uid]["start_link"]
+
+        batch_temp.STATE[uid] = None
+
+        datas = start_link.split("/")
+
+        temp = datas[-1].replace("?single","").split("-")
+
+        fromID = int(temp[0].strip())
+
+        toID = fromID + count - 1
+
+        message.text = start_link.replace(
+            str(fromID),
+            f"{fromID}-{toID}"
+				)
     # Joining chat
     if ("https://t.me/+" in message.text or "https://t.me/joinchat/" in message.text) and LOGIN_SYSTEM == False:
         if TechVJUser is None:
