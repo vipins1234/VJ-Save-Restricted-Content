@@ -275,6 +275,12 @@ toID = fromID
 				
         batch_temp.IS_BATCH[message.from_user.id] = False
         for msgid in range(fromID, fromID + count):
+
+    await asyncio.sleep(WAITING_TIME)
+
+if LOGIN_SYSTEM == True:
+    try:
+        await acc.disconnect()
             if batch_temp.IS_BATCH.get(message.from_user.id): break
             
             # private
