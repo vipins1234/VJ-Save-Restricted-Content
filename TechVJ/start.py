@@ -15,6 +15,8 @@ from bot import TechVJUser
 
 class batch_temp(object):
     IS_BATCH = {}
+    STATE = {}
+    DATA = {}
 
 async def downstatus(client, statusfile, message, chat):
     while True:
