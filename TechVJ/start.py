@@ -169,7 +169,7 @@ async def batch_cmd(client: Client, message: Message):
     uid = message.from_user.id
 
     batch_temp.STATE[uid] = "WAIT_START_LINK"
-    batch_temp.IS_BATCH[uid] = False
+    batch_temp.IS_BATCH[uid] = True
 
     await message.reply_text(
     "📌 Send START post link"
