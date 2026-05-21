@@ -247,7 +247,7 @@ async def save(client: Client, message: Message):
         return
     
     if "https://t.me/" in message.text:
-        if batch_temp.IS_BATCH.get(message.from_user.id) == False:
+        if batch_temp.IS_BATCH.get(message.from_user.id, True) == False:
             return await message.reply_text("**One Task Is Already Processing. Wait For Complete It. If You Want To Cancel This Task Then Use - /cancel**")
         datas = message.text.split("/")
         temp = datas[-1].replace("?single","").split("-")
