@@ -147,7 +147,7 @@ async def send_start(client: Client, message: Message):
 🆘 Need Help? Use /help
 
 ━━━━━━━━━━━━━━━━━━
-💎 Powered By @VJ_Bots
+💎 Powered By @vipinkk798
 </b>""",
         reply_markup=reply_markup, 
         reply_to_message_id=message.id
