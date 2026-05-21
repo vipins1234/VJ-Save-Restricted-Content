@@ -162,7 +162,8 @@ async def send_help(client: Client, message: Message):
         chat_id=message.chat.id, 
         text=f"{HELP_TXT}"
     )
-	@Client.on_message(filters.command("batch"))
+
+@Client.on_message(filters.command("batch"))
 async def batch_cmd(client: Client, message: Message):
 
     uid = message.from_user.id
