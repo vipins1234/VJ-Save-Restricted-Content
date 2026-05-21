@@ -146,7 +146,7 @@ async def send_start(client: Client, message: Message):
 
 ━━━━━━━━━━━━━━━━━━
 💎 Powered By @VJ_Bots
-</b>""" 
+</b>""",
         reply_markup=reply_markup, 
         reply_to_message_id=message.id
     )
