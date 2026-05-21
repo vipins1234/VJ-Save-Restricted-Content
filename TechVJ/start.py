@@ -274,7 +274,7 @@ toID = fromID
             acc = TechVJUser
 				
         batch_temp.IS_BATCH[message.from_user.id] = False
-        for msgid in range(fromID, toID+1):
+        for msgid in range(fromID, fromID + count):
             if batch_temp.IS_BATCH.get(message.from_user.id): break
             
             # private
