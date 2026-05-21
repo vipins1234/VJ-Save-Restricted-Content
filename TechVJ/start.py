@@ -246,8 +246,11 @@ async def save(client: Client, message: Message):
         return
     
     if "https://t.me/" in message.text:
+
     if batch_temp.IS_BATCH.get(message.from_user.id, True) == False:
-        return await message.reply_text("**One Task Is Already Processing. Wait For Complete It. If You Want To Cancel This Task Then Use - /cancel**")
+        return await message.reply_text(
+            "**One Task Is Already Processing. Wait For Complete It. If You Want To Cancel This Task Then Use - /cancel**"
+        )
 
     datas = message.text.split("/")
     temp = datas[-1].replace("?single","").split("-")
@@ -256,22 +259,43 @@ async def save(client: Client, message: Message):
 
     if state != "WAIT_COUNT":
         count = 1
-            user_data = await db.get_session(message.from_user.id)
-            if user_data is None:
-                await message.reply("**For Downloading Restricted Content You Have To /login First.**")
-                return
-            api_id = int(await db.get_api_id(message.from_user.id))
-            api_hash = await db.get_api_hash(message.from_user.id)
-            try:
-                acc = Client("saverestricted", session_string=user_data, api_hash=api_hash, api_id=api_id)
-                await acc.connect()
-            except:
-                return await message.reply("**Your Login Session Expired. So /logout First Then Login Again By - /login**")
-        else:
-            if TechVJUser is None:
-                await client.send_message(message.chat.id, f"**String Session is not Set**", reply_to_message_id=message.id)
-                return
-            acc = TechVJUser
+
+    if LOGIN_SYSTEM == True:
+        user_data = await db.get_session(message.from_user.id)
+
+        if user_data is None:
+            await message.reply(
+                "**For Downloading Restricted Content You Have To /login First.**"
+            )
+            return
+
+        api_id = int(await db.get_api_id(message.from_user.id))
+        api_hash = await db.get_api_hash(message.from_user.id)
+
+        try:
+            acc = Client(
+                "saverestricted",
+                session_string=user_data,
+                api_hash=api_hash,
+                api_id=api_id
+            )
+            await acc.connect()
+
+        except:
+            return await message.reply(
+                "**Your Login Session Expired. So /logout First Then Login Again By - /login**"
+            )
+
+    else:
+        if TechVJUser is None:
+            await client.send_message(
+                message.chat.id,
+                "**String Session is not Set**",
+                reply_to_message_id=message.id
+            )
+            return
+
+        acc = TechVJUser
 				
         batch_temp.IS_BATCH[message.from_user.id] = False
         for msgid in range(fromID, fromID + count):
