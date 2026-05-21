@@ -122,7 +122,31 @@ async def send_start(client: Client, message: Message):
     reply_markup = InlineKeyboardMarkup(buttons)
     await client.send_message(
         chat_id=message.chat.id, 
-        text=f"<b>👋 Hi {message.from_user.mention}, I am Save Restricted Content Bot, I can send you restricted content by its post link.\n\nFor downloading restricted content /login first.\n\nKnow how to use bot by - /help</b>", 
+        text=f"""<b>
+✨ Welcome {message.from_user.mention} ✨
+
+╭──────────────────╮
+  🚀 Save Restricted Bot
+╰──────────────────╯
+
+🔓 Download Restricted Content
+⚡ Fast & Secure Processing
+📥 Supports Private Channels
+🎬 Videos • Photos • Documents
+
+━━━━━━━━━━━━━━━━━━
+
+📌 How To Use:
+
+1️⃣ Send Any Telegram Post Link
+2️⃣ Login Using /login
+3️⃣ Get File Instantly
+
+🆘 Need Help? Use /help
+
+━━━━━━━━━━━━━━━━━━
+💎 Powered By @VJ_Bots
+</b>""" 
         reply_markup=reply_markup, 
         reply_to_message_id=message.id
     )
