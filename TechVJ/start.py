@@ -9,6 +9,11 @@ from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated, UserAlreadyParticipant, InviteHashExpired, UsernameNotOccupied
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message 
 from config import API_ID, API_HASH, ERROR_MESSAGE, LOGIN_SYSTEM, STRING_SESSION, CHANNEL_ID, WAITING_TIME
+class BatchState:
+    WAITING_START = {}   # user_id : True/False
+    WAITING_END = {}     # user_id : True/False
+    START_ID = {}        # user_id : (link, fromID)
+    END_ID = {}          # user_id : toID
 from database.db import db
 from TechVJ.strings import HELP_TXT
 from bot import TechVJUser
