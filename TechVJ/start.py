@@ -200,7 +200,7 @@ async def save(client: Client, message: Message):
         batch_temp.STATE[uid] = "WAIT_COUNT"
 
         return await message.reply_text(
-            "📦 Send number of files"
+            "⏳ Send number of files"
         )
 
     # STEP 2
@@ -414,7 +414,7 @@ async def save(client: Client, message: Message):
 
         await client.send_message(
             message.chat.id,
-            "✅ Batch Completed Successfully."
+            "☑️ Batch Completed Successfully."
 		)
 
 # handle private
