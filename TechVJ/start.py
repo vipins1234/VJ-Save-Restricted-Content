@@ -322,6 +322,7 @@ async def save(client: Client, message: Message):
                         chatid,
                         msgid
                     )
+					remaining -= 1
 
                 except Exception as e:
 
