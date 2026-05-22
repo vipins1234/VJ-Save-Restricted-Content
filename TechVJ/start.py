@@ -450,7 +450,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
 
             # empty text check
             if not msg.text or not msg.text.strip():
-            return
+                return
 
             await client.send_message(
                 chat_id=chat,
