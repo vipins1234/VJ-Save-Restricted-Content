@@ -561,7 +561,8 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
 
 if os.path.exists(file):
     os.remove(file)
-    await client.delete_messages(message.chat.id,[smsg.id])
+
+await client.delete_messages(message.chat.id, [smsg.id])
 
 
 # get the type of message
