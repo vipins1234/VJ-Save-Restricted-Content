@@ -448,11 +448,11 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
 
         try:
 
-        # empty text check
-        if not msg.text or not msg.text.strip():
+            # empty text check
+            if not msg.text or not msg.text.strip():
             return
 
-        await client.send_message(
+            await client.send_message(
             chat_id=chat,
             text=msg.text,
             entities=msg.entities,
