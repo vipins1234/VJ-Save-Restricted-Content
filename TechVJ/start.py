@@ -302,7 +302,7 @@ async def save(client: Client, message: Message):
 
         batch_temp.IS_BATCH[message.from_user.id] = False
 
-        remaining = count
+remaining = count
 
 for msgid in range(fromID, fromID + count):
 
