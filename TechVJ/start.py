@@ -639,11 +639,8 @@ def get_message_type(msg: pyrogram.types.messages_and_media.message.Message):
     except:
         pass
 
-    try:
-        msg.text
-        return "Text"
-    except:
-        pass
+    if msg.text and msg.text.strip():
+    return "Text"
         
 
 # Don't Remove Credit @VJ_Bots
