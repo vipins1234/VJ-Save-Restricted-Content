@@ -556,9 +556,11 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
             if ERROR_MESSAGE == True:
                 await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
     
-    if os.path.exists(f'{message.id}upstatus.txt'): 
-        os.remove(f'{message.id}upstatus.txt')
-        os.remove(file)
+    if os.path.exists(f'{message.id}upstatus.txt'):
+    os.remove(f'{message.id}upstatus.txt')
+
+if os.path.exists(file):
+    os.remove(file)
     await client.delete_messages(message.chat.id,[smsg.id])
 
 
