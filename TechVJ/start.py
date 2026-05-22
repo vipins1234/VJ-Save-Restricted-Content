@@ -396,6 +396,7 @@ elif "https://t.me/b/" in message.text:
                             username,
                             msgid
                         )
+						remaining -= 1
 
                     except Exception as e:
 
