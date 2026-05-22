@@ -333,30 +333,30 @@ async def save(client: Client, message: Message):
                         )
 
             # bot
-            elif "https://t.me/b/" in message.text:
+elif "https://t.me/b/" in message.text:
 
-                username = datas[4]
+    username = datas[4]
 
-                try:
-                    await handle_private(
-    client,
-    acc,
-    message,
-    chatid,
-    msgid,
-    remaining
-)
+    try:
+        await handle_private(
+            client,
+            acc,
+            message,
+            username,
+            msgid,
+            remaining
+        )
 
-remaining -= 1
+        remaining -= 1
 
-                except Exception as e:
+    except Exception as e:
 
-                    if ERROR_MESSAGE == True:
-                        await client.send_message(
-                            message.chat.id,
-                            f"Error: {e}",
-                            reply_to_message_id=message.id
-                        )
+        if ERROR_MESSAGE == True:
+            await client.send_message(
+                message.chat.id,
+                f"Error: {e}",
+                reply_to_message_id=message.id
+			)
 
             # public
             else:
