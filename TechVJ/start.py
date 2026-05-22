@@ -304,7 +304,7 @@ async def save(client: Client, message: Message):
 
 remaining = count
 
-for msgid in range(fromID, fromID + count):
+        for msgid in range(fromID, fromID + count):
 
             if batch_temp.IS_BATCH.get(message.from_user.id):
                 break
