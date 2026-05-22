@@ -446,7 +446,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
     if batch_temp.IS_BATCH.get(message.from_user.id): return 
     if "Text" == msg_type:
 
-    try:
+        try:
 
         # empty text check
         if not msg.text or not msg.text.strip():
@@ -640,7 +640,7 @@ def get_message_type(msg: pyrogram.types.messages_and_media.message.Message):
         pass
 
     if msg.text and msg.text.strip():
-    return "Text"
+        return "Text"
         
 
 # Don't Remove Credit @VJ_Bots
