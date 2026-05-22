@@ -339,12 +339,15 @@ remaining = count
 
                 try:
                     await handle_private(
-                        client,
-                        acc,
-                        message,
-                        username,
-                        msgid
-                    )
+    client,
+    acc,
+    message,
+    chatid,
+    msgid,
+    remaining
+)
+
+remaining -= 1
 
                 except Exception as e:
 
