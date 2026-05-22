@@ -224,7 +224,6 @@ async def save(client: Client, message: Message):
 
         fromID = int(temp[0].strip())
 
-        toID = fromID + count - 1
 
         message.text = start_link
     # Joining chat
