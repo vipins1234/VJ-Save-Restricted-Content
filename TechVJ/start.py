@@ -433,9 +433,15 @@ async def save(client: Client, message: Message):
 # handle private
 async def handle_private(client: Client, acc, message: Message, chatid: int, msgid: int, remaining):
     msg: Message = await acc.get_messages(chatid, msgid)
-    if msg.empty: return 
+
+    if msg.empty:
+        return
+
     msg_type = get_message_type(msg)
-    if not msg_type: return 
+
+    if not msg_type:
+        return
+
     if CHANNEL_ID:
         try:
             chat = int(CHANNEL_ID)
@@ -443,8 +449,12 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
             chat = message.chat.id
     else:
         chat = message.chat.id
-    if batch_temp.IS_BATCH.get(message.from_user.id): return 
-    if "Text" == msg_type:
+
+    if batch_temp.IS_BATCH.get(message.from_user.id):
+        return
+
+    # TEXT MESSAGE HANDLE
+    if msg_type == "Text":
 
         try:
 
@@ -457,20 +467,20 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
                 text=msg.text,
                 entities=msg.entities,
                 reply_to_message_id=message.id
-        )
-
-        return
-
-    except Exception as e:
-
-        if ERROR_MESSAGE:
-            await client.send_message(
-                message.chat.id,
-                f"Error: {e}",
-                reply_to_message_id=message.id
             )
 
-        return 
+            return
+
+        except Exception as e:
+
+            if ERROR_MESSAGE:
+                await client.send_message(
+                    message.chat.id,
+                    f"Error: {e}",
+                    reply_to_message_id=message.id
+                )
+
+            return 
 
     message._start_time = time.time()
 
