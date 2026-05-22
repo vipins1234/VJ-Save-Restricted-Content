@@ -445,13 +445,32 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
         chat = message.chat.id
     if batch_temp.IS_BATCH.get(message.from_user.id): return 
     if "Text" == msg_type:
-        try:
-            await client.send_message(chat, msg.text, entities=msg.entities, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
-            return 
-        except Exception as e:
-            if ERROR_MESSAGE == True:
-                await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
-            return 
+
+    try:
+
+        # empty text check
+        if not msg.text or not msg.text.strip():
+            return
+
+        await client.send_message(
+            chat_id=chat,
+            text=msg.text,
+            entities=msg.entities,
+            reply_to_message_id=message.id
+        )
+
+        return
+
+    except Exception as e:
+
+        if ERROR_MESSAGE:
+            await client.send_message(
+                message.chat.id,
+                f"Error: {e}",
+                reply_to_message_id=message.id
+            )
+
+        return 
 
     message._start_time = time.time()
 
