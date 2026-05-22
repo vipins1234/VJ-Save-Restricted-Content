@@ -475,7 +475,9 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
     caption = f"📦 Remaining : {remaining}\n\n{msg.caption}"
 else:
     caption = f"📦 Remaining : {remaining}"
-    if batch_temp.IS_BATCH.get(message.from_user.id): return 
+
+if batch_temp.IS_BATCH.get(message.from_user.id):
+    return 
             
     if "Document" == msg_type:
         try:
