@@ -453,10 +453,10 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
             return
 
             await client.send_message(
-            chat_id=chat,
-            text=msg.text,
-            entities=msg.entities,
-            reply_to_message_id=message.id
+                chat_id=chat,
+                text=msg.text,
+                entities=msg.entities,
+                reply_to_message_id=message.id
         )
 
         return
