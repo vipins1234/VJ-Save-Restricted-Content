@@ -315,16 +315,16 @@ async def save(client: Client, message: Message):
                 chatid = int("-100" + datas[4])
 
                 try:
-                    await handle_private(
-                        client,
-                        acc,
-                        message,
-                        chatid,
-                        msgid,
-                        remaining
-                  )
+    await handle_private(
+        client,
+        acc,
+        message,
+        chatid,
+        msgid,
+        remaining
+    )
 
-                remaining -= 1
+    remaining -= 1
 
                 except Exception as e:
 
