@@ -480,9 +480,9 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
     asyncio.create_task(upstatus(client, f'{message.id}upstatus.txt', smsg, chat))
 
     if msg.caption:
-    caption = msg.caption
-else:
-    caption = ""
+        caption = msg.caption
+    else:
+        caption = ""
 
     if batch_temp.IS_BATCH.get(message.from_user.id):
         return 
