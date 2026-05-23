@@ -172,7 +172,7 @@ async def batch_cmd(client: Client, message: Message):
     batch_temp.IS_BATCH[uid] = True
 
     await message.reply_text(
-    "📌 Send START post link"
+    "📌 𝑺𝒆𝒏𝒅 𝑺𝒕𝒂𝒓𝒕 𝑷𝒐𝒔𝒕 𝑳𝒊𝒏𝒌"
 	)
 
 # cancel command
@@ -200,7 +200,7 @@ async def save(client: Client, message: Message):
         batch_temp.STATE[uid] = "WAIT_COUNT"
 
         return await message.reply_text(
-            "⏳ Send number of files"
+            "♦️ 𝑺𝒆𝒏𝒅 𝒏𝒖𝒎𝒃𝒆𝒓 𝒐𝒇 𝒇𝒊𝒍𝒆"
         )
 
     # STEP 2
@@ -426,7 +426,7 @@ async def save(client: Client, message: Message):
 
         await client.send_message(
             message.chat.id,
-            "☑️ Batch Completed Successfully."
+            "✅ 𝑩𝒂𝒕𝒄𝒉 𝒄𝒐𝒎𝒑𝒍𝒆𝒕𝒆 𝒔𝒖𝒄𝒄𝒆𝒔𝒔𝒇𝒖𝒍𝒍𝒚."
 		)
 
 # handle private
