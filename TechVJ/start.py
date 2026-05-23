@@ -86,12 +86,12 @@ def progress(current, total, message, type):
     remaining_bar = 10 - completed
 
     progress_bar = (
-        "🟩" * completed +
+        "🟥" * completed +
         "⬜" * remaining_bar
     )
 
     status = f"""
-╭━━━〔 ⚡ ULTRA PREMIUM ⚡ 〕━━━╮
+╭━━━〔 📌 ULTRA PREMIUM 📌 〕━━━╮
 
 📦 Size : {current_size:.2f} / {total_size:.2f} MB
 🚀 Speed : {speed_mb:.2f} MB/s
@@ -125,7 +125,7 @@ async def send_start(client: Client, message: Message):
     await client.send_message(
         chat_id=message.chat.id, 
         text=f"""<b>
-✨ Welcome {message.from_user.mention} ✨
+🌹 Welcome {message.from_user.mention} 🌹
 
 ╭──────────────────╮
   🚀 Save Restricted Bot
@@ -181,7 +181,7 @@ async def send_cancel(client: Client, message: Message):
     batch_temp.IS_BATCH[message.from_user.id] = True
     await client.send_message(
         chat_id=message.chat.id, 
-        text="**Batch Successfully Cancelled.**"
+        text="**𝑩𝒂𝒕𝒄𝒉 𝒔𝒖𝒄𝒄𝒆𝒔𝒔𝒇𝒖𝒍𝒍𝒚 𝒄𝒂𝒏𝒄𝒆𝒍𝒍𝒆𝒅.**"
     )
 
 @Client.on_message(filters.text & filters.private)
