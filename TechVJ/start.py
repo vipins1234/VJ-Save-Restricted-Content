@@ -116,10 +116,10 @@ async def send_start(client: Client, message: Message):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
     buttons = [[
-        InlineKeyboardButton("❣️ Developer", url = "https://t.me/vipinkk798")
+        InlineKeyboardButton("❣️ Developer", url = "https://t.me/Vipin11220")
     ],[
-        InlineKeyboardButton('📌 sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url='https://t.me/+TZcsQ-tSOLZmZmI1'),
-        InlineKeyboardButton('♦️ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ', url='https://t.me/+HDMluvw5V6Y2ZWI1')
+        InlineKeyboardButton('📌 sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url='https://t.me/+GXbp3OBg9-ZmYjZl'),
+        InlineKeyboardButton('♦️ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ', url='https://t.me/+5W3I3YXA8XMwMDdl')
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     await client.send_message(
@@ -147,7 +147,7 @@ async def send_start(client: Client, message: Message):
 🆘 Need Help? Use /help
 
 ━━━━━━━━━━━━━━━━━━
-💎 Powered By @vipinkk798
+💎 Powered By @Vipin11220
 </b>""",
         reply_markup=reply_markup, 
         reply_to_message_id=message.id
